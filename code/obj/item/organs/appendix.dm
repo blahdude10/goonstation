@@ -6,6 +6,7 @@
 	organ_holder_required_op_stage = 3.0
 	icon_state = "appendix"
 	failure_disease = /datum/ailment/disease/appendicitis
+	food_effects = list("food_hp_up")
 
 	on_life(var/mult = 1)
 		if (!..())
