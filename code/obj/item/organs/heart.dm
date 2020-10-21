@@ -22,7 +22,7 @@
 
 	Eat(/obj/item/heart)
 		if (sims)
-  		M.sims.affectMotive("Hunger", 10)
+  		sims.affectMotive("Hunger", 10)
 			return ..()
 		return 0
 
