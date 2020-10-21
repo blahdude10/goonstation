@@ -20,6 +20,12 @@
 	var/blood_id = "blood"
 	var/reag_cap = 100
 
+	Eat(/obj/item/heart)
+		if (sims)
+  		M.sims.affectMotive("Hunger", 10)
+			return ..()
+		return 0
+
 	New(loc, datum/organHolder/nholder)
 		. = ..()
 		reagents = new/datum/reagents(reag_cap)
