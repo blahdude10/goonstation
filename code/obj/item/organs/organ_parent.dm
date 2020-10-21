@@ -48,9 +48,23 @@
 	var/decal_done = 0 // fuckers are tossing these around a lot so I guess they're only gunna make one, ever now
 	var/body_side = null // L_ORGAN/1 for left, R_ORGAN/2 for right
 	var/datum/bone/bones = null
+
+	var/heal_amt = 0
+	proc/heal(var/mob/living/M) //supposed to do hunger healing
+		var/healing = src.heal_amt //supposed to also do hunger healing in some way
+
 	rand_pos = 1
 
 	var/made_from = "flesh" //Material this organ will produce.
+
+	Eat(mob/M, mob/user)
+		if (ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if (H.sims)
+				H.sims.affectMotive("Hunger", heal_amt * 2)
+				H.sims.affectMotive("Bladder", -heal_amt * 0.2)
+			return 0
+
 
 	attack(var/mob/living/carbon/M as mob, var/mob/user as mob)
 		if (!ismob(M))
